@@ -11,7 +11,7 @@ export default function AccueilSection() {
   return (
     <div>
       {Array.isArray(personalData) &&
-        userData.map((user, userIndex) => {
+        personalData.map((user, userIndex) => {
           const reversedPosts = [...user?.profile?.posts].reverse();
           return (
             <div key={userIndex} className="details">

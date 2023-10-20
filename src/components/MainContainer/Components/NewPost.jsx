@@ -21,24 +21,24 @@ export default function NewPost() {
   const [files, setFile] = useState();
 
   const id = useSelector((state) => state.getEmail.id);
-  const Email = useSelector((state) => state.getEmail.email);
-
+  // const Email = useSelector((state) => state.getEmail.email);
+  const Email = localStorage.getItem("email");
+  const [errer, setErre] = useState(null);
   const profileId = useSelector((state) => state.getUser.data);
   const result = profileId.filter((state) => state.email === Email);
-
   const handelUplod = async (e) => {
     const file = e.target.files[0];
     setFile(file);
     const url = await uploadImageToStrapi(file);
-    setUrl("http://localhost:1337" + url);
+    setUrl("https://softymedia.onrender.com" + url);
   };
-  const handlePost = async () => {
-    setUpload(true);
 
+  const handlePost = async () => {
+    console.log();
+    setUpload(true);
     if (id && url) {
-      console.log("djdjsjd");
       const data = {
-        id: result[0].profile.id,
+        id: id,
         imageUrl: url,
         text: text,
       };
@@ -106,9 +106,11 @@ export default function NewPost() {
                 <span>Streaming</span>
               </div>
             </div>
-            <span className="Post" onClick={handlePost}>
-              Post
-            </span>
+          
+              <span className="Post" onClick={handlePost}>
+                Post
+              </span>
+            
           </div>
         </div>
       )}

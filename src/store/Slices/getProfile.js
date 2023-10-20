@@ -6,7 +6,7 @@ export const fetchProfileData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.REACT_BACKEND_APP}api/profiles?populate=*`,
+        `https://softymedia.onrender.com/api/profiles?populate=*`,
         {
           headers: {
             "Content-Type": "Application/json",

@@ -6,7 +6,7 @@ export const fetchPostData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.REACT_BACKEND_APP}api/posts?populate=*`,
+        `https://softymedia.onrender.com/api/posts?populate=*`,
         {
           headers: {
             "Content-Type": "Application/json",
@@ -28,7 +28,7 @@ export const createNewPost = createAsyncThunk(
     console.log(postData);
     try {
       const response = await axios.post(
-        `${import.meta.env.REACT_BACKEND_APP}api/posts`,
+        `https://softymedia.onrender.com/api/posts`,
         {
           data: {
             profile: postData.id,
@@ -43,6 +43,7 @@ export const createNewPost = createAsyncThunk(
           },
         }
       );
+      console.log(response);
       return response.data;
     } catch (error) {
       console.error("Failed to create a post.", error);
@@ -56,7 +57,7 @@ export const updatePost = createAsyncThunk(
   async ({ id, like }) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.REACT_BACKEND_APP}api/posts/${id}`,
+        `https://softymedia.onrender.com/api/posts/${id}`,
         {
           data: {
             like: like,

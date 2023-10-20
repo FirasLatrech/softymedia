@@ -5,7 +5,7 @@ import React from "react";
 export default async function CreateProfile(email) {
   try {
     const response = await fetch(
-      `${import.meta.env.REACT_BACKEND_APP}api/profiles`,
+      `https://softymedia.onrender.com/api/profiles`,
       {
         method: "POST",
         headers: {

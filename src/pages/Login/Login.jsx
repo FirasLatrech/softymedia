@@ -87,18 +87,21 @@ export default function Auth() {
     const profileId = await handleCreateProfile();
     const fullName = firstName + " " + lastName; // Combine first name and last name
     try {
-      const response = await fetch(`${API}/auth/local/register`, {
-        method: "POST",
-        body: JSON.stringify({
-          email: email,
-          username: fullName,
-          password: password,
-          profile: profileId,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://softymedia.onrender.com/api/auth/local/register`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: email,
+            username: fullName,
+            password: password,
+            profile: profileId,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

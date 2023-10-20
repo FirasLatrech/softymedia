@@ -17,7 +17,7 @@ export default function ForgetPassword() {
       }
 
       const response = await fetch(
-        `${import.meta.env.REACT_BACKEND_APP}api/auth/reset-password`,
+        `https://softymedia.onrender.com/api/auth/reset-password`,
         {
           method: "POST",
           headers: {

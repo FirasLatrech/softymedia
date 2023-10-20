@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { setToken } from "../utils/Helpers";
 import { useNavigate } from "react-router-dom";
 import { handelChnageIdUser } from "../store/Slices/GetEmail";
-
 export default async function RegisterFunction(
   username,
   email,
@@ -11,9 +10,8 @@ export default async function RegisterFunction(
   profileId
 ) {
   try {
-    console.log(import.meta.env.REACT_BACKEND_APP);
     const response = await fetch(
-      `https://softymedia.onrender.com/auth/local/register`,
+      `https://softymedia.onrender.com/api/auth/local/register`,
       {
         method: "POST",
         body: JSON.stringify({
