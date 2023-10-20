@@ -1,0 +1,155 @@
+@import "../sass-utils/functions";
+@import "../sass-utils/helpers";
+@import "../sass-utils/mixins";
+@import "../sass-utils/variables";
+
+.Header {
+  padding: 1rem;
+  @include flex();
+  justify-content: space-between;
+  .rightContainer {
+    @include flex();
+    gap: 10px;
+    img {
+      width: 23px;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    span {
+      color: $Grey600;
+      background-color: $Grey300;
+      padding: 4px;
+      font-size: small;
+      border-radius: 9px;
+    }
+  }
+  .leftContainer {
+    @include flex(row, center, 20px);
+    .NotifcationContainer {
+      position: relative;
+    }
+    .notificationNumber {
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      background-color: $ErrorMain;
+      opacity: 1;
+      z-index: 2;
+      width: 19px;
+      height: 19px;
+      text-align: center;
+      color: white;
+      border-radius: 50%;
+      font-size: 15px;
+    }
+    img {
+      width: 25px;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    .flag {
+      opacity: 1;
+      border-radius: 3px;
+    }
+    .SettingIcon {
+      animation: 5.5s linear infinite spinner;
+    }
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .Avatar {
+      opacity: 1 !important;
+
+      width: 40px;
+      border-radius: 50%;
+      border: 1px solid $Grey400;
+      padding: 3px;
+    }
+  }
+}
+.parametre {
+  position: absolute;
+  right: 3rem;
+  top: 4rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 1rem;
+  border-radius: 20px;
+  color: $ErrorMain;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    color: $ErrorMain;
+  }
+  &:hover {
+    opacity: 0.7;
+    transition: all 0.6s;
+  }
+}
+.FindUser {
+  position: absolute;
+  padding: 10px;
+  z-index: 2;
+  top: 4rem;
+  width: 19rem;
+  border-radius: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 100vh;
+  .InputButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 9px;
+    border-radius: 14px;
+    border: 1px solid $Grey500;
+
+    input {
+      border: none;
+
+      outline: 0;
+    }
+  }
+  .allProfile {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 85vh;
+    overflow: scroll;
+    .profileCard {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3px;
+      padding: 9px;
+      border-radius: 12px;
+      .leftSection {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: transparent;
+        .ProfileFullName {
+          background-color: transparent;
+        }
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: transparent;
+      }
+      &:hover {
+        background-color: $Grey300;
+        cursor: pointer;
+        transition: all 0.1s;
+      }
+    }
+  }
+}

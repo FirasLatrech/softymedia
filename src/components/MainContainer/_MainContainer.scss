@@ -1,0 +1,78 @@
+@import "../../sass-utils/functions";
+@import "../../sass-utils/helpers";
+@import "../../sass-utils/mixins";
+@import "../../sass-utils/variables";
+.MainContainerSection {
+  @include flex(column, flex-start, 1rem);
+  width: 100%;
+}
+.MainContainer {
+  width: 100%;
+  border-radius: 12px;
+}
+.file-input {
+}
+.NewPost {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  @include flex(column, flex-start, 1rem);
+  border-radius: 12px;
+  padding: 1rem;
+  Textarea {
+    width: 100%;
+    height: 8rem;
+    border-radius: 19px;
+    padding: 1rem;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid $Grey400;
+    // border: none;
+    resize: none;
+    outline: none;
+    overflow: scroll;
+  }
+  Textarea::placeholder {
+    color: $Grey500;
+    font-size: 14px;
+  }
+  .new_Post {
+    @include flex();
+    .Post {
+      background-color: $Grey900;
+      color: white;
+      padding: 9px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    justify-content: space-between;
+    width: 100%;
+    .rightButton {
+      @include flex(row, center, 20px);
+      .button {
+        cursor: pointer;
+
+        @include flex();
+        .imageVideoIcon {
+          filter: invert(83%) sepia(93%) saturate(3689%) hue-rotate(64deg)
+            brightness(80%) contrast(91%);
+          width: 24px;
+        }
+        .Streaming {
+          width: 24px;
+          filter: invert(41%) sepia(53%) saturate(1513%) hue-rotate(336deg)
+            brightness(99%) contrast(107%);
+        }
+        background-color: rgba(145, 158, 171, 0.08);
+        padding: 6px;
+        border-radius: 13px;
+        img,
+        span {
+          background: transparent;
+          color: rgb(99, 115, 129);
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+.mainContainer {
+  width: 100%;
+}

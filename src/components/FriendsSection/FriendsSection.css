@@ -1,0 +1,102 @@
+.Hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Hero span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.Hero .Search {
+  border: 1px solid #c4cdd5;
+  padding: 10px;
+  border-radius: 5px;
+}
+.Hero .Search input {
+  border: none;
+  outline: 0;
+  background-color: transparent;
+}
+.Hero .Search::-moz-placeholder {
+  opacity: 0.8;
+}
+.Hero .Search::placeholder {
+  opacity: 0.8;
+}
+
+.Cart {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 20%;
+  border-radius: 12px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.ThreePoint {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+  scale: 1.2;
+  background-color: transparent;
+  opacity: 0.7;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 60px;
+}
+
+.textContainer h4 {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.textContainer h6 {
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.textContainer .linkers {
+  background-color: transparent;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  gap: 1rem;
+  scale: 1.2;
+}
+.textContainer .linkers .facebook {
+  cursor: pointer;
+  filter: invert(82%) sepia(8%) saturate(7090%) hue-rotate(175deg) brightness(99%) contrast(92%);
+  background-color: transparent;
+}
+.textContainer .linkers .Instagrame {
+  cursor: pointer;
+  filter: invert(28%) sepia(49%) saturate(3896%) hue-rotate(323deg) brightness(91%) contrast(92%);
+  background-color: transparent;
+}
+.textContainer .linkers .Linkedin {
+  cursor: pointer;
+  filter: invert(82%) sepia(8%) saturate(7090%) hue-rotate(175deg) brightness(99%) contrast(92%);
+  background-color: transparent;
+  opacity: 0.8;
+}
+.textContainer .linkers .Twitter {
+  cursor: pointer;
+  filter: invert(45%) sepia(93%) saturate(2056%) hue-rotate(166deg) brightness(100%) contrast(105%);
+  background-color: transparent;
+}
+
+.AllFriendCart {
+  margin-top: 3rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}/*# sourceMappingURL=FriendsSection.css.map */

@@ -1,0 +1,46 @@
+@import "../sass-utils/functions";
+@import "../sass-utils/helpers";
+@import "../sass-utils/mixins";
+@import "../sass-utils/variables";
+.User {
+  height: 100vh;
+  width: 68%;
+  margin: auto;
+}
+.mainSection {
+  margin-top: 2rem;
+  display: flex;
+  gap: 10px;
+}
+.reloding {
+  width: 40%;
+  margin: auto;
+}
+
+@media (max-width: 1290px) {
+  .User {
+    width: 90%;
+  }
+}
+@media (max-width: 740px) {
+  .mainSection {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+.backToHome {
+  position: absolute;
+  padding: 8px;
+  z-index: 4;
+  background-color: $PrimaryMain;
+  color: white;
+  border-radius: 0px 12px 12px 0;
+  cursor: pointer;
+  &:hover {
+    border-radius: 12px;
+
+    opacity: 0.9;
+    transition: all 0.5s;
+  }
+}

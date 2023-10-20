@@ -1,0 +1,42 @@
+//========> All Mixins <============//
+
+// opacity mixins
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=($opacity * 100));
+}
+
+//font-size mixins
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+// font-familiy mixin
+
+@mixin google-font($family) {
+  @import url("http://fonts.googleapis.com/css?family=#{$family}");
+}
+
+// box-shadow mixins
+@mixin box-shadow($h: 10px, $v: 10px, $b: 0px, $s: 0px, $c: #000000) {
+  -webkit-box-shadow: $h $v $b $s $c;
+  -moz-box-shadow: $h $v $b $s $c;
+  box-shadow: $h $v $b $s $c;
+}
+
+// display border raduis
+
+@mixin braduis($top: 0, $right: 0, $bot: 0, $left: 0) {
+  border-radius: $top $right $bot $left;
+  @if $top == 0 {
+    border-radius: 100%;
+  }
+}
+
+// disply flex mixin
+@mixin flex($flex-direction: row, $align-item: center, $gap: 5px) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-item;
+  gap: $gap;
+}

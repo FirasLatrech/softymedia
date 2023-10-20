@@ -1,0 +1,116 @@
+@import "../../sass-utils/functions";
+@import "../../sass-utils/helpers";
+@import "../../sass-utils/mixins";
+@import "../../sass-utils/variables";
+.SideBar {
+  @include flex(column, flex-start, 2rem);
+  font-size: 18px;
+
+  .FollowerAndFollowing {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    @include flex(row, center, 2rem);
+    justify-content: space-around;
+    padding: 1.7rem 3rem;
+    border-radius: 13px;
+    @media (max-width: 734px) {
+      width: 100%;
+      gap: 7rem;
+    }
+    @media (max-width: 320px) {
+      width: 100%;
+      gap: 1rem;
+    }
+  }
+  .Follower {
+    h5 {
+      font-size: 25px;
+    }
+    span {
+      color: $Grey600;
+      font-size: 17px;
+    }
+  }
+  .hr {
+    border-left: 2px dotted $Grey400;
+    height: 3.5rem;
+    width: 100%;
+  }
+  .About {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 2rem;
+    border-radius: 13px;
+    min-width: 28%;
+    @include flex(column, flex-start, 1rem);
+    h5 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 15px;
+      opacity: 0.7;
+    }
+    div {
+      @include flex();
+    }
+  }
+  .Social {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    @include flex(column, flex-start, 1rem);
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    min-width: 100%;
+    h5 {
+      font-size: 25px;
+    }
+    > div {
+      @include flex();
+      width: 20px !important;
+      span {
+        font-size: 14px;
+      }
+    }
+    .facebook {
+      filter: invert(82%) sepia(8%) saturate(7090%) hue-rotate(175deg)
+        brightness(99%) contrast(92%);
+      background-color: transparent;
+      scale: 1.5;
+    }
+    .Instagrame {
+      img {
+        filter: invert(28%) sepia(49%) saturate(3896%) hue-rotate(323deg)
+          brightness(91%) contrast(92%);
+        background-color: transparent;
+        scale: 1.5;
+      }
+    }
+    .Linkedin {
+      img {
+        filter: invert(82%) sepia(8%) saturate(7090%) hue-rotate(175deg)
+          brightness(99%) contrast(92%);
+        background-color: transparent;
+        scale: 1.5;
+        opacity: 0.8;
+      }
+    }
+    .Twitter {
+      img {
+        filter: invert(45%) sepia(93%) saturate(2056%) hue-rotate(166deg)
+          brightness(100%) contrast(105%);
+        scale: 1.5;
+        background-color: transparent;
+      }
+    }
+  }
+}
+.flex {
+  @include flex();
+}
+.underLine {
+  font-weight: 500;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.fontSize {
+  font-size: 14px;
+  font-weight: 200;
+}

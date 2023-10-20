@@ -1,0 +1,27 @@
+@import "../sass-utils/functions";
+@import "../sass-utils/helpers";
+@import "../sass-utils/mixins";
+@import "../sass-utils/variables";
+
+.AppLayout {
+  @include flex(column, flex-start, 3rem);
+  border-radius: 12px;
+  height: 100vh;
+  .header {
+    width: 100%;
+  }
+  .main {
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    padding: 10px;
+  }
+}
+@media (max-width: 1600px) {
+  .AppLayout {
+    margin: 0 !important;
+  }
+  .main {
+    width: 100% !important;
+  }
+}

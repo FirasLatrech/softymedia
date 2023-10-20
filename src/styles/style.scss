@@ -1,0 +1,18 @@
+// importation de sass-utils
+@import "../sass-utils/mixins";
+@import "../sass-utils/_functions";
+@import "../sass-utils/helpers";
+@import "../sass-utils/variables";
+// popines font family :
+@include google-font(
+  "Public+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+);
+// start style
+
+* {
+  background-color: $Grey100;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Public Sans";
+  font-style: normal;
+}
