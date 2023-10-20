@@ -13,7 +13,7 @@ export default async function RegisterFunction(
   try {
     console.log(import.meta.env.REACT_BACKEND_APP);
     const response = await fetch(
-      `https://softy-media.vercel.app/auth/local/register`,
+      `https://softymedia.onrender.com/auth/local/register`,
       {
         method: "POST",
         body: JSON.stringify({
