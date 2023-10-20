@@ -17,7 +17,7 @@ export default function ForgetPassword() {
       }
 
       const response = await fetch(
-        "http://localhost:1337/api/auth/reset-password",
+        `${import.meta.env.REACT_BACKEND_APP}api/auth/reset-password`,
         {
           method: "POST",
           headers: {

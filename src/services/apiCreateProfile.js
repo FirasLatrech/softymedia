@@ -4,17 +4,20 @@ import React from "react";
 
 export default async function CreateProfile(email) {
   try {
-    const response = await fetch("http://localhost:1337/api/profiles", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        data: {
-          Email: email,
+    const response = await fetch(
+      `${import.meta.env.REACT_BACKEND_APP}api/profiles`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      }),
-    });
+        body: JSON.stringify({
+          data: {
+            Email: email,
+          },
+        }),
+      }
+    );
     if (response.ok) {
       const data = await response.json();
       return data.data.id;

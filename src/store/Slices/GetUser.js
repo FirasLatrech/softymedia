@@ -6,7 +6,7 @@ export const fetchUserData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/users?populate=deep,4",
+        `${import.meta.env.REACT_BACKEND_APP}api/users?populate=deep,4`,
         {
           headers: {
             "Content-Type": "Application/json",
@@ -27,7 +27,7 @@ export const updateUserData = createAsyncThunk(
   async ({ id, username, email, picture }) => {
     try {
       const response = await axios.put(
-        `http://localhost:1337/api/users/${id}`,
+        `${import.meta.env.REACT_BACKEND_APP}api/users/${id}`,
         {
           username: username,
           email: email,
@@ -55,7 +55,7 @@ export const updateFriends = createAsyncThunk(
 
     try {
       const response = await axios.put(
-        `http://localhost:1337/api/users/${id}`,
+        `${import.meta.env.REACT_BACKEND_APP}api/users/${id}`,
         {
           followers: followers,
         },

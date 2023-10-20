@@ -4,11 +4,9 @@ import axios from "axios";
 export const createCommentAsync = createAsyncThunk(
   "comments/createComment",
   async ({ id, name, comment_description, picture }) => {
-    
-
     try {
       const response = await axios.post(
-        "http://localhost:1337/api/comments",
+        `${import.meta.env.REACT_BACKEND_APP}api/comments`,
         {
           data: {
             Name: name,

@@ -6,7 +6,7 @@ export const fetchProfileData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/profiles?populate=*",
+        `${import.meta.env.REACT_BACKEND_APP}api/profiles?populate=*`,
         {
           headers: {
             "Content-Type": "Application/json",

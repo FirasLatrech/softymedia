@@ -12,6 +12,7 @@ export default async function RegisterFunction(
   profileId
 ) {
   try {
+    console.log(import.meta.env.REACT_BACKEND_APP);
     const response = await fetch(`${API}/auth/local/register`, {
       method: "POST",
       body: JSON.stringify({

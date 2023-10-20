@@ -3,14 +3,17 @@ export default async function uploadImageToStrapi(file) {
     const data = new FormData();
     data.append("files", file);
 
-    const response = await fetch("http://localhost:1337/api/upload", {
-      method: "POST",
-      body: data,
-      // headers: {
-      //   "Content-Type": "multipart/form-data",
-      //   Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      // },
-    });
+    const response = await fetch(
+      `${import.meta.env.REACT_BACKEND_APP}api/upload`,
+      {
+        method: "POST",
+        body: data,
+        // headers: {
+        //   "Content-Type": "multipart/form-data",
+        //   Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        // },
+      }
+    );
     console.log(response);
     if (!response.ok) {
       throw new Error("Network response was not ok");

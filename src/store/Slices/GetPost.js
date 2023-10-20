@@ -6,7 +6,7 @@ export const fetchPostData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/posts?populate=*",
+        `${import.meta.env.REACT_BACKEND_APP}api/posts?populate=*`,
         {
           headers: {
             "Content-Type": "Application/json",
@@ -28,7 +28,7 @@ export const createNewPost = createAsyncThunk(
     console.log(postData);
     try {
       const response = await axios.post(
-        "http://localhost:1337/api/posts",
+        `${import.meta.env.REACT_BACKEND_APP}api/posts`,
         {
           data: {
             profile: postData.id,
@@ -56,7 +56,7 @@ export const updatePost = createAsyncThunk(
   async ({ id, like }) => {
     try {
       const response = await axios.put(
-        `http://localhost:1337/api/posts/${id}`,
+        `${import.meta.env.REACT_BACKEND_APP}api/posts/${id}`,
         {
           data: {
             like: like,
