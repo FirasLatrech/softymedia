@@ -9,6 +9,7 @@ import Lottie from "lottie-react";
 import { fetchUserData } from "../../../store/Slices/GetUser";
 import uploadImageToStrapi from "../../../services/apiPostPhoto";
 import uplodImageAnimation from "../../../assets/animation/animation_lnwvq87r.json";
+import { handelChnageUploding } from "../../../store/Slices/GetEmail";
 export default function NewPost() {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,6 +34,12 @@ export default function NewPost() {
     setUrl("https://softymedia.onrender.com" + url);
   };
 
+  console.log(url);
+  if (url == "") {
+    dispatch(handelChnageUploding(false));
+  } else {
+    dispatch(handelChnageUploding(true));
+  }
   const handlePost = async () => {
     console.log();
     setUpload(true);
@@ -52,6 +59,7 @@ export default function NewPost() {
       console.error("ID or Image URL is missing!");
     }
   };
+  const uplod = useSelector((state) => state.getEmail.uploding);
   return (
     <div className="MainContainer">
       {upload ? (
@@ -106,11 +114,15 @@ export default function NewPost() {
                 <span>Streaming</span>
               </div>
             </div>
-          
-              <span className="Post" onClick={handlePost}>
-                Post
-              </span>
-            
+
+            <button
+              type="button"
+              className={uplod == false ? "Post dispabled" : "Post"}
+              onClick={handlePost}
+              disabled={uplod == false ? true : false}
+            >
+              Post
+            </button>
           </div>
         </div>
       )}

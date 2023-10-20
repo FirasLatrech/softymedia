@@ -8,6 +8,7 @@ const getEmail = createSlice({
     OpenTheModel: false,
     AddFriend: false,
     userId: localStorage.getItem("id"),
+    uploding: false,
   },
   reducers: {
     handelChangeId(state, action) {
@@ -28,6 +29,9 @@ const getEmail = createSlice({
     handelChnageIdUser(state, action) {
       state.userEmail = action.payload;
     },
+    handelChnageUploding(state, action) {
+      state.uploding = action.payload;
+    },
   },
 });
 export const {
@@ -37,6 +41,7 @@ export const {
   handelOpenTheModel,
   handelAddFreind,
   handelChnageIdUser,
+  handelChnageUploding,
 } = getEmail.actions;
 
 export default getEmail.reducer;

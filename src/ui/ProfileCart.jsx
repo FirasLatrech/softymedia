@@ -7,13 +7,15 @@ import {
   handelChnageShearchBar,
 } from "../store/Slices/GetEmail";
 import { useNavigate } from "react-router-dom";
+import { fetchUserData } from "../store/Slices/GetUser";
 export default function ProfileCard({ data }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleUpdate = (email) => {
     dispatch(handelChangeEmail(email));
-    navigate(`user/invitation/profile`);
     dispatch(handelChnageShearchBar(false));
+    dispatch(fetchUserData());
+    navigate(`user/invitation/profile`);
   };
 
   return (
