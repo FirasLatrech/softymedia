@@ -35,7 +35,8 @@ export default function Auth() {
   // const GetProfilee = async () => {
   //   await GetProfile(); // Call the imported registration function
   // };
-  async function handelLgoin() {
+  async function handelLgoin(e) {
+    e.preventDefault();
     try {
       const response = await fetch(`${API}/auth/local`, {
         method: "POST",
@@ -141,59 +142,61 @@ export default function Auth() {
       {Location.pathname.includes("/forgot-password") ? (
         <ForgetPassword />
       ) : Location.pathname.includes("/login") ? (
-        <div className="LoginSection">
-          <div className="ImageContainer">
-            <img src={illustrations} alt="" />
-          </div>
-          <div className="LoginForm">
-            <h5>Sign in to Minimal</h5>
-            <span className="NewAccount">
-              New user ?{" "}
-              <span
-                onClick={() => {
-                  Navigate("/register");
-                }}
-              >
-                Create an account
+        <form onSubmit={(e) => handelLgoin(e)}>
+          <div className="LoginSection">
+            <div className="ImageContainer">
+              <img src={illustrations} alt="" />
+            </div>
+            <div className="LoginForm">
+              <h5>Sign in to Minimal</h5>
+              <span className="NewAccount">
+                New user ?{" "}
+                <span
+                  onClick={() => {
+                    Navigate("/register");
+                  }}
+                >
+                  Create an account
+                </span>
               </span>
-            </span>
-            <div className="InputContainer">
-              <input
-                type="text"
-                placeholder="Email Address"
-                className="EmailAdress"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <div className="Password">
+              <div className="InputContainer">
                 <input
-                  type={isOpne ? "password" : "text"}
-                  placeholder="Password"
-                  className="PasswordInput"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  type="text"
+                  placeholder="Email Address"
+                  className="EmailAdress"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <img
-                  src={isOpne ? OpenEyesIcon : CloseEyesIcon}
-                  alt=""
-                  className="OpneEyes"
-                  onClick={() => setIsopen((show) => !show)}
-                />
+                <div className="Password">
+                  <input
+                    type={isOpne ? "password" : "text"}
+                    placeholder="Password"
+                    className="PasswordInput"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <img
+                    src={isOpne ? OpenEyesIcon : CloseEyesIcon}
+                    alt=""
+                    className="OpneEyes"
+                    onClick={() => setIsopen((show) => !show)}
+                  />
+                </div>
+                <span
+                  className="Forgotpassword"
+                  onClick={() => {
+                    Navigate("/forgot-password");
+                  }}
+                >
+                  Forgot password ?
+                </span>
               </div>
-              <span
-                className="Forgotpassword"
-                onClick={() => {
-                  Navigate("/forgot-password");
-                }}
-              >
-                Forgot password ?
-              </span>
-            </div>
-            <div className="Login" onClick={() => handelLgoin()}>
-              Login
+              <button className="Login" type="submit">
+                Login
+              </button>
             </div>
           </div>
-        </div>
+        </form>
       ) : (
         <form onSubmit={(e) => handleRegister(e)}>
           <div className="LoginSection">
