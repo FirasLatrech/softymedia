@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { API } from "../../Auth/constant";
 import { setToken } from "../utils/Helpers";
 import { useNavigate } from "react-router-dom";
 import { handelChnageIdUser } from "../store/Slices/GetEmail";
@@ -13,18 +12,21 @@ export default async function RegisterFunction(
 ) {
   try {
     console.log(import.meta.env.REACT_BACKEND_APP);
-    const response = await fetch(`${API}/auth/local/register`, {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        username: username,
-        password: password,
-        profile: profileId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.REACT_BACKEND_APP}auth/local/register`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          username: username,
+          password: password,
+          profile: profileId,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
