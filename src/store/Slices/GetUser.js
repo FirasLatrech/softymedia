@@ -6,7 +6,7 @@ export const fetchUserData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `https://softymedia.onrender.com/api/users?populate=deep,4`,
+        `http://localhost:1337/api/users?populate=deep,4`,
         {
           headers: {
             "Content-Type": "Application/json",
@@ -27,7 +27,7 @@ export const updateUserData = createAsyncThunk(
   async ({ id, username, email, picture }) => {
     try {
       const response = await axios.put(
-        `https://softymedia.onrender.com/api/users/${id}`,
+        `http://localhost:1337/api/users/${id}`,
         {
           username: username,
           email: email,
@@ -55,7 +55,7 @@ export const updateFriends = createAsyncThunk(
 
     try {
       const response = await axios.put(
-        `https://softymedia.onrender.com/api/users/${id}`,
+        `http://localhost:1337/api/users/${id}`,
         {
           followers: followers,
         },

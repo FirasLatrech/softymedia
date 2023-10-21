@@ -3,7 +3,7 @@ import "./_User.scss";
 import HeroSection from "../components/HeroSection/HeroSection";
 import SideBarSection from "../components/SideBarSection/SideBarSection";
 import MainContainer from "../components/MainContainer/MainContainer";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import FollowersSection from "../components/FollowersSection/FollowersSection";
 import FriendsSection from "../components/FriendsSection/FriendsSection";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,15 @@ export default function User() {
   const data = useSelector((state) => state.getUser.data) || []; // Initialize as an empty array
   const Email = useSelector((state) => state.getEmail.email);
 
+  useEffect(() => {
+    const currentEmail = localStorage.getItem("email");
+
+    if (currentEmail && location.pathname.includes("user/invitation/profile")) {
+      dispatch(handelChangeEmail(currentEmail));
+      Navigate("/user/profile");
+    }
+  }, [dispatch, Navigate, location.pathname]);
+
   if (!data.length) {
     return (
       <div>
@@ -34,17 +43,12 @@ export default function User() {
     ); // Add a loading indicator or handle the loading state
   }
 
-  const handelRelod = () => {
-    const currentEmail = localStorage.getItem("email");
-
-    dispatch(handelChangeEmail(currentEmail));
-    Navigate("/user/profile");
-  };
-
   const LastAboutDataForUser = data.filter((state) => state.email === Email);
-  if (localStorage.getItem("authToken") == "") {
+  if (localStorage.getItem("authToken") === "") {
+    console.log("jjsj");
     Navigate("/login");
   }
+
   return (
     <>
       <div className="User">

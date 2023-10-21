@@ -3,7 +3,7 @@ export default async function uploadImageToStrapi(file) {
     const data = new FormData();
     data.append("files", file);
 
-    const response = await fetch(`https://softymedia.onrender.com/api/upload`, {
+    const response = await fetch(`http://localhost:1337/api/upload`, {
       method: "POST",
       body: data,
       // headers: {

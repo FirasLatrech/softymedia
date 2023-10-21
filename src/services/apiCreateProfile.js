@@ -4,20 +4,17 @@ import React from "react";
 
 export default async function CreateProfile(email) {
   try {
-    const response = await fetch(
-      `https://softymedia.onrender.com/api/profiles`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    const response = await fetch(`http://localhost:1337/api/profiles`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          Email: email,
         },
-        body: JSON.stringify({
-          data: {
-            Email: email,
-          },
-        }),
-      }
-    );
+      }),
+    });
     if (response.ok) {
       const data = await response.json();
       return data.data.id;

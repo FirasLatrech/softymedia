@@ -6,7 +6,7 @@ export const fetchPostData = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `https://softymedia.onrender.com/api/posts?populate=*`,
+        `http://localhost:1337/api/posts?populate=*`,
         {
           headers: {
             "Content-Type": "Application/json",
@@ -28,7 +28,7 @@ export const createNewPost = createAsyncThunk(
     console.log(postData);
     try {
       const response = await axios.post(
-        `https://softymedia.onrender.com/api/posts`,
+        `http://localhost:1337/api/posts`,
         {
           data: {
             profile: postData.id,
@@ -57,7 +57,7 @@ export const updatePost = createAsyncThunk(
   async ({ id, like }) => {
     try {
       const response = await axios.put(
-        `https://softymedia.onrender.com/api/posts/${id}`,
+        `http://localhost:1337/api/posts/${id}`,
         {
           data: {
             like: like,

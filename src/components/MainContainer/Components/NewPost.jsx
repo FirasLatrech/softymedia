@@ -31,10 +31,8 @@ export default function NewPost() {
     const file = e.target.files[0];
     setFile(file);
     const url = await uploadImageToStrapi(file);
-    setUrl("https://softymedia.onrender.com" + url);
+    setUrl("http://localhost:1337" + url);
   };
-
-  console.log(url);
   if (url == "") {
     dispatch(handelChnageUploding(false));
   } else {
@@ -45,7 +43,7 @@ export default function NewPost() {
     setUpload(true);
     if (id && url) {
       const data = {
-        id: id,
+        id: result[0]?.profile?.id,
         imageUrl: url,
         text: text,
       };

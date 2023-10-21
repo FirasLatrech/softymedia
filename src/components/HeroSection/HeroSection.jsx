@@ -15,7 +15,6 @@ import {
 import { HiPencil, HiUserMinus, HiUserPlus } from "react-icons/hi2";
 import close from "../../assets/animation/animation_lnvjvl9b.json";
 import dataAnimation from "../../assets/animation/animation_lnvkrp98.json";
-
 import Lottie from "lottie-react";
 import GetUser, {
   fetchUserData,
@@ -24,6 +23,7 @@ import GetUser, {
 } from "../../store/Slices/GetUser";
 import uploadImageToStrapi from "../../services/apiPostPhoto";
 import uplodImageAnimation from "../../assets/animation/animation_lnwvq87r.json";
+
 export default function HeroSection({ data }) {
   const pictureUrl = data.Picture;
   const navigate = useNavigate();
@@ -177,72 +177,76 @@ export default function HeroSection({ data }) {
       ) : null}
 
       <div className="Profile">
-        <div className="ImgCover"></div>
-        <div className="underCover">
-          <div className="rightContaine profile">
-            <img
-              src={pictureUrl == "" || pictureUrl == null ? avatar : pictureUrl}
-              alt="avatar_3"
-              className="avatar_picture"
-            />
-            <div className="aboutme">
-              <h3>{data?.username}</h3>
-              <span>{data.about == null ? "No work " : data.about.work}</span>
+        <div className="Profile">
+          <div className="ImgCover"></div>
+          <div className="underCover">
+            <div className="rightContaine profile">
+              <img
+                src={
+                  pictureUrl == "" || pictureUrl == null ? avatar : pictureUrl
+                }
+                alt="avatar_3"
+                className="avatar_picture"
+              />
+              <div className="aboutme">
+                <h3>{data?.username}</h3>
+                <span>{data.about == null ? "No work " : data.about.work}</span>
+              </div>
             </div>
-          </div>
-          <div>
-            {pathname.includes("/user/invitation") != true ? (
-              <div className="updateProfile" onClick={handleModelOpen}>
-                <HiPencil />
-              </div>
-            ) : (
-              <div
-                className="updateProfile addFriend"
-                onClick={handeAddAnvitaion}
-              >
-                <span className="addIcon">
-                  {addFriende === false ? <HiUserPlus /> : <HiUserMinus />}
-                </span>
-                {addFriende === false ? "Add Friend" : "Cancel"}
-              </div>
-            )}
-            {type != "invitation" ? (
-              <div className="Lines">
-                <NavLink to="/user/accueil">
-                  <div className="lien">
-                    <img src={ProfileIcon} alt="" />
-                    <span>Accueil</span>
-                  </div>
-                </NavLink>
-                <NavLink to="/user/profile">
-                  <div className="lien">
-                    <img src={ProfileIcon} alt="" />
-                    <span>Profile</span>
-                  </div>
-                </NavLink>
-                <NavLink to="/user/followers">
-                  <div className="lien">
-                    <img src={Followers} alt="" />
-                    <span>Followers</span>
-                  </div>
-                </NavLink>
-                <NavLink to="/user/friends">
-                  <div className="lien">
-                    <img src={Friends} alt="" />
-                    <span>Friends</span>
-                  </div>
-                </NavLink>
-              </div>
-            ) : (
-              <div className="Lines">
-                <NavLink to="/user/invitation/profile">
-                  <div className="lien">
-                    <img src={ProfileIcon} alt="" />
-                    <span>Profile</span>
-                  </div>
-                </NavLink>
-              </div>
-            )}
+            <div>
+              {pathname.includes("/user/invitation") != true ? (
+                <div className="updateProfile" onClick={handleModelOpen}>
+                  <HiPencil />
+                </div>
+              ) : (
+                <div
+                  className="updateProfile addFriend"
+                  onClick={handeAddAnvitaion}
+                >
+                  <span className="addIcon">
+                    {addFriende === false ? <HiUserPlus /> : <HiUserMinus />}
+                  </span>
+                  {addFriende === false ? "Add Friend" : "Cancel"}
+                </div>
+              )}
+              {type != "invitation" ? (
+                <div className="Lines">
+                  <NavLink to="/user/accueil">
+                    <div className="lien">
+                      <img src={ProfileIcon} alt="" />
+                      <span>Accueil</span>
+                    </div>
+                  </NavLink>
+                  <NavLink to="/user/profile">
+                    <div className="lien">
+                      <img src={ProfileIcon} alt="" />
+                      <span>Profile</span>
+                    </div>
+                  </NavLink>
+                  <NavLink to="/user/followers">
+                    <div className="lien">
+                      <img src={Followers} alt="" />
+                      <span>Followers</span>
+                    </div>
+                  </NavLink>
+                  <NavLink to="/user/friends">
+                    <div className="lien">
+                      <img src={Friends} alt="" />
+                      <span>Friends</span>
+                    </div>
+                  </NavLink>
+                </div>
+              ) : (
+                <div className="Lines">
+                  <NavLink to="/user/invitation/profile">
+                    <div className="lien">
+                      <img src={ProfileIcon} alt="" />
+                      <span>Profile</span>
+                    </div>
+                  </NavLink>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

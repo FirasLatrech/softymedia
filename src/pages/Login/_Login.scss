@@ -23,6 +23,12 @@
     img {
       background-color: transparent;
     }
+    @media (max-width: 1219px) {
+      width: 70%;
+    }
+    @media (max-width: 851px) {
+      display: none;
+    }
   }
   .LoginForm {
     height: calc(100vh + 10rem);
@@ -65,6 +71,7 @@
       }
     }
     .InputContainer {
+      width: 100%;
       @include flex(column, flex-start, 20px);
       background-color: transparent;
       .FullName {
@@ -101,6 +108,17 @@
           cursor: pointer;
         }
       }
+    }
+    @media (max-width: 851px) {
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+
+      border-radius: 13px;
+    }
+    @media (max-width: 653px) {
+      align-items: center;
     }
   }
   .Forgotpassword {

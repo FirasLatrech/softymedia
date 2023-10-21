@@ -6,7 +6,7 @@ export const createCommentAsync = createAsyncThunk(
   async ({ id, name, comment_description, picture }) => {
     try {
       const response = await axios.post(
-        `https://softymedia.onrender.com/api/comments`,
+        `http://localhost:1337/api/comments`,
         {
           data: {
             Name: name,

@@ -11,7 +11,7 @@ export default async function RegisterFunction(
 ) {
   try {
     const response = await fetch(
-      `https://softymedia.onrender.com/api/auth/local/register`,
+      `http://localhost:1337/api/auth/local/register`,
       {
         method: "POST",
         body: JSON.stringify({

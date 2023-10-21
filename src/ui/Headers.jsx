@@ -6,7 +6,7 @@ import SettingIcon from "../assets/icons/SettingIcon.svg";
 import avatar from "../assets/Images/avatar/avatar_3.jpg";
 import FriendIcon from "../assets/icons/FirendIcon.svg";
 import "./_Hearder.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ProfileCart from "./ProfileCart";
 import { useDispatch, useSelector } from "react-redux";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
@@ -21,7 +21,7 @@ export default function Header() {
   const userDataBeforFilter = useSelector((state) => state.getUser.data);
   const Email = localStorage.getItem("email");
   const shearchBarIsOpne = useSelector((state) => state.getEmail.shearchBar);
-
+  const Navigate = useNavigate();
   useEffect(() => {
     if (Array.isArray(userDataBeforFilter)) {
       const filteredData = userDataBeforFilter.filter((state) => {
@@ -33,7 +33,13 @@ export default function Header() {
       setUserData(filteredData);
     }
   }, [value, userDataBeforFilter, Email]);
+  const handerPathLogin = () => {
+    localStorage.setItem("authToken", "");
+    localStorage.setItem("email", "");
+    localStorage.setItem("id", "");
 
+    Navigate("/login");
+  };
   return (
     <div className="Header">
       <div className="rightContainer">
@@ -67,7 +73,7 @@ export default function Header() {
       )}
       <div className="leftContainer">
         <img src={ENglishFlagIcon} className="flag" alt="" />
-        <div className="NotificationContainer">
+        <div className="NotifcationContainer">
           <span className="notificationNumber">3</span>
           <img src={NotifcationIcon} alt="" />
         </div>
@@ -82,7 +88,7 @@ export default function Header() {
         <img src={avatar} className="Avatar" alt="" />
         {isOpen && (
           <div className="parametre">
-            <NavLink to="login">logout</NavLink>
+            <NavLink onClick={handerPathLogin}>logout</NavLink>
           </div>
         )}
       </div>

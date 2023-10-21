@@ -1,40 +1,42 @@
-import "./_Login.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import illustrations from "../../assets/illustrations/illustration_dashboard.png";
 import OpenEyesIcon from "../../assets/icons/OpenEyes.svg";
 import CloseEyesIcon from "../../assets/icons/CloseEyes.svg";
 import { setToken } from "../../utils/Helpers";
 import { useLocation, useNavigate } from "react-router-dom";
-// import LoginFunction from "../../services/apiLogin"; // Import your login function
 import ForgetPassword from "../ForgetPassword/ForgetPassword";
-import RegisterFunction from "../../services/apiRegister";
 import CreateProfile from "../../services/apiCreateProfile";
 import { useDispatch } from "react-redux";
 import { API } from "../../../Auth/constant";
+import "./_Login.scss";
 import {
   handelChangeEmail,
   handelChangeId,
   handelChnageIdUser,
 } from "../../store/Slices/GetEmail";
+
 export default function Auth() {
   const Navigate = useNavigate();
   const Location = useLocation();
+  useEffect(() => {
+    if (localStorage.getItem("authToken") !== "") {
+      Navigate("/user/profile");
+    }
+  }, [Location.pathname]);
+
   const [isOpne, setIsopen] = useState(false);
-  const [email, setEmail] = useState(""); // State to store email
-  const [password, setPassword] = useState(""); // State to store password
-  const [firstName, setFirstName] = useState(""); // State to store first name
-  const [lastName, setLastName] = useState(""); // State to store last name
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [profileId, setProfileId] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  localStorage.setItem("email", email);
+
   const handleCreateProfile = async () => {
     const profileId = await CreateProfile(email);
     return profileId;
   };
-  // const GetProfilee = async () => {
-  //   await GetProfile(); // Call the imported registration function
-  // };
+
   async function handelLgoin(e) {
     e.preventDefault();
     try {
@@ -58,15 +60,12 @@ export default function Auth() {
         localStorage.setItem("id", data.user.id);
 
         setToken(data.jwt);
-        // dispatch(handelChange(data.user.email));
         setSucces(() => true);
 
         setTimeout(() => {
-          navigate("/user/profile", { state: { data: data.user } });
+          Navigate("/user/profile", { state: { data: data.user } });
           setSucces(() => null);
         }, 1000);
-
-        //
       } else {
         setSucces(() => false);
 
@@ -77,18 +76,18 @@ export default function Auth() {
     } catch (error) {
       console.error("Fetch error:", error);
     }
-
-    // Call the imported login function
   }
+
   const FullNamee = firstName + lastName;
 
   const handleRegister = async (e) => {
     e.preventDefault();
     const profileId = await handleCreateProfile();
-    const fullName = firstName + " " + lastName; // Combine first name and last name
+    const fullName = firstName + " " + lastName;
+
     try {
       const response = await fetch(
-        `https://softymedia.onrender.com/api/auth/local/register`,
+        `http://localhost:1337/api/auth/local/register`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -135,9 +134,9 @@ export default function Auth() {
   return (
     <>
       {succes != null && (
-        <div className={succes == true ? "popupgreen" : "popupred"}>
-          {succes == true
-            ? "welcom to your account"
+        <div className={succes === true ? "popupgreen" : "popupred"}>
+          {succes === true
+            ? "welcome to your account"
             : "Please verify your data."}
         </div>
       )}
@@ -172,7 +171,7 @@ export default function Auth() {
                 />
                 <div className="Password">
                   <input
-                    type={isOpne ? "password" : "text"}
+                    type={!isOpne ? "password" : "text"}
                     placeholder="Password"
                     className="PasswordInput"
                     value={password}
