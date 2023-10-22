@@ -16,6 +16,7 @@ import { updatePost } from "../../../../store/Slices/GetPost";
 import GetUser, { fetchUserData } from "../../../../store/Slices/GetUser";
 
 export default function CartContainer({ data, details, personalData }) {
+  console.log(data);
   const { type } = useParams();
 
   const dispatch = useDispatch();

@@ -25,15 +25,16 @@ export default function User() {
 
   const data = useSelector((state) => state.getUser.data) || []; // Initialize as an empty array
   const Email = useSelector((state) => state.getEmail.email);
+  const currentEmail = localStorage.getItem("email");
 
-  useEffect(() => {
-    const currentEmail = localStorage.getItem("email");
+  // useEffect(() => {
+  //   const currentEmail = localStorage.getItem("email");
 
-    if (currentEmail && location.pathname.includes("user/invitation/profile")) {
-      dispatch(handelChangeEmail(currentEmail));
-      Navigate("/user/profile");
-    }
-  }, [dispatch, Navigate, location.pathname]);
+  //   if (currentEmail && location.pathname.includes("user/invitation/profile")) {
+  //     dispatch(handelChangeEmail(currentEmail));
+  //     Navigate("/user/profile");
+  //   }
+  // }, [dispatch, Navigate, location.pathname]);
 
   if (!data.length) {
     return (
@@ -42,6 +43,11 @@ export default function User() {
       </div>
     ); // Add a loading indicator or handle the loading state
   }
+  const handelRelod = () => {
+    dispatch(handelChangeEmail(currentEmail));
+    dispatch(fetchUserData());
+    Navigate("/user/profile");
+  };
 
   const LastAboutDataForUser = data.filter((state) => state.email === Email);
   if (localStorage.getItem("authToken") === "") {

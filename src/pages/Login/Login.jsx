@@ -19,7 +19,11 @@ export default function Auth() {
   const Navigate = useNavigate();
   const Location = useLocation();
   useEffect(() => {
-    if (localStorage.getItem("authToken") !== "") {
+    if (
+      localStorage.getItem("authToken") != "" &&
+      localStorage.getItem("email").length > 5 &&
+      localStorage.getItem("id") != ""
+    ) {
       Navigate("/user/profile");
     }
   }, [Location.pathname]);
